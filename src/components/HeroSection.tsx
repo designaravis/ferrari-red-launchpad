@@ -46,29 +46,17 @@ const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        {/* Added mt-20 here to push content down on mobile only */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mt-20 lg:mt-0">
           {/* Left Content */}
           <div className="text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
-            >
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-primary">
-                ISO 9001:2015 Certified
-              </span>
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-zinc-900 mb-8 leading-[1.1]"
             >
-              Grow With{' '}
-              <span className="text-gradient">Confidence</span>
+              Grow with <span className="text-red-600">Confidence</span>
             </motion.h1>
 
             <motion.p
@@ -100,7 +88,7 @@ const HeroSection = () => {
                 href="#services"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-full border-2 border-foreground/20 text-lg font-semibold hover:border-primary hover:text-primary transition-colors inline-flex items-center justify-center"
+                className="px-8 py-4 bg-transparent text-black border border-zinc-300 rounded-full font-bold hover:bg-zinc-100 transition-all"
               >
                 Explore Services
               </motion.a>
@@ -122,7 +110,7 @@ const HeroSection = () => {
                   <Globe className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-1">
-                  50+
+                  12+
                 </h3>
                 <p className="text-muted-foreground text-sm">Countries Served</p>
               </motion.div>

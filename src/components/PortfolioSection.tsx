@@ -20,14 +20,14 @@ const portfolioItems = [
     description: 'Complete branding for food industry client',
   },
   {
-    title: 'Digital Marketing Campaign',
-    category: 'Marketing',
-    description: 'Lead generation campaign with 300% ROI',
+    title: 'Document scanning & Digitalization',
+    category: 'Digital Services',
+    description: 'Scan and digitalization services',
   },
   {
-    title: 'Import-Export Portal',
-    category: 'Impex',
-    description: 'Global trade management platform',
+    title: 'Scanning & OCR Services',
+    category: 'OCR Services',
+    description: 'Document Assessment',
   },
   {
     title: 'LMS Solution',
@@ -103,41 +103,10 @@ const PortfolioSection = () => {
                 <p className="text-secondary-foreground/60 text-sm mb-4">
                   {item.description}
                 </p>
-                
-                <div className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-sm font-medium">View Project</span>
-                  <ExternalLink className="w-4 h-4" />
-                </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Trusted By Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center"
-        >
-          <h3 className="text-lg font-medium text-secondary-foreground/60 mb-8">
-            Trusted by Leading Organizations
-          </h3>
-          <div className="flex flex-wrap justify-center gap-8 lg:gap-12">
-            {clients.map((client, index) => (
-              <motion.div
-                key={client}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ delay: 0.6 + index * 0.1 }}
-                whileHover={{ scale: 1.1 }}
-                className="text-secondary-foreground/40 hover:text-primary font-semibold text-lg transition-colors cursor-default"
-              >
-                {client}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

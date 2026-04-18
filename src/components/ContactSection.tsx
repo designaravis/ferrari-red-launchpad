@@ -43,10 +43,10 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
+  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61584745504534', label: 'Facebook' },
+  { icon: Instagram, href: 'https://www.instagram.com/inotrizglobal/', label: 'Instagram' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/inotriz-global-6bb78a393/', label: 'LinkedIn' },
+  { icon: Youtube, href: 'https://www.youtube.com/@inotrizG', label: 'YouTube' },
 ];
 
 const ContactSection = () => {
@@ -66,7 +66,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-32 bg-muted/30 relative overflow-hidden">
+    <section id="contact" className="py-20 lg:py-32 bg-white relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent" />
       
@@ -81,7 +81,7 @@ const ContactSection = () => {
           <span className="text-primary font-semibold uppercase tracking-wider text-sm">
             Get In Touch
           </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-6">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-6 text-black">
             Let's Grow Together
           </h2>
           <p className="text-muted-foreground text-lg">
@@ -109,7 +109,7 @@ const ContactSection = () => {
                     </label>
                     <Input
                       type="text"
-                      placeholder="John Doe"
+                      placeholder="Name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="h-12 rounded-xl border-border/50 focus:border-primary"
@@ -121,7 +121,7 @@ const ContactSection = () => {
                     </label>
                     <Input
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder="youremail@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="h-12 rounded-xl border-border/50 focus:border-primary"

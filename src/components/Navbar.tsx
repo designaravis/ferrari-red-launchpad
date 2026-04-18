@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link as RouterLink } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
+  { name: "Websites", href: "#websites" },
   { name: 'Services', href: '#services' },
   { name: 'Portfolio', href: '#portfolio' },
+  { name: "Blog", href: "#blog" },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -34,7 +37,7 @@ const Navbar = () => {
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto px-2 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.a
@@ -46,7 +49,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Inotriz Global"
-              className="h-10 md:h-12 w-auto"
+              className="h-[50px] md:h-[60px] w-auto object-contain"
             />
           </motion.a>
 

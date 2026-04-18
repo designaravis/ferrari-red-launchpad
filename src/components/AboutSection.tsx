@@ -97,12 +97,12 @@ const AboutSection = () => {
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-6">
               Accelerating Business Growth Globally
             </h2>
-            <p className="text-muted-foreground text-lg mb-6">
+            <p className="text-white text-lg mb-6">
               Inotriz Global accelerates and scales businesses through a powerful synergy of services. 
-              We offer Business Consulting, Marketing Consulting, and Import/Export Management to 
+              We offer Business Consulting, Software solutions and Document scanning & Digitalization to 
               expand your reach across global borders.
             </p>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-white mb-8">
               From strategy to implementation, we manage the end-to-end growth journey, 
               ensuring businesses achieve sustainable success in both domestic and international markets.
             </p>
@@ -119,7 +119,7 @@ const AboutSection = () => {
                   <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <CheckCircle2 className="w-4 h-4 text-primary" />
                   </div>
-                  <span className="text-foreground font-medium">{feature}</span>
+                  <span className="text-white font-medium">{feature}</span>
                 </motion.div>
               ))}
             </div>
