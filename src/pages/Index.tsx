@@ -18,7 +18,7 @@ const Index = () => {
     const fetchLatest = async () => {
       try {
         // This query fetches the 3 most recent posts for the home page
-        const query = `*[_type == "post"] | order(publishedAt desc)[0...3] {
+        const query = `*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc)[0...3] {
           title,
           "slug": slug.current, 
           "date": publishedAt,
