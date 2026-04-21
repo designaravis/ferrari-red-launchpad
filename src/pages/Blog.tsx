@@ -12,7 +12,7 @@ const Blog = () => {
     const fetchPosts = async () => {
       try {
         // Advanced query to get formatted dates and clean text
-        const query = `*[_type == "post"] | order(publishedAt desc) {
+        const query = `*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
           title,
           "slug": slug.current,
           "date": publishedAt,
