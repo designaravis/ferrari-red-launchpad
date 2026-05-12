@@ -6,7 +6,7 @@ const logos = [
   { name: 'Aida', url: '/logos/aida.png' },
   { name: 'GIF', url: '/logos/GIF.png' },
   { name: 'Coldmonk', url: '/logos/coldmonk.png' },
-  { name: 'das', url: '/logos/das.png' },
+  { name: 'DAS Energy', url: '/logos/das-energy.svg' },
   { name: 'gentize', url: '/logos/gentize.png' },
   { name: 'rajacater', url: '/logos/rajacater.png' },
   { name: 'reboot', url: '/logos/reboot.png' },
@@ -34,7 +34,7 @@ const LogoScroll = () => {
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 25, 
+              duration: 30, 
               ease: "linear",
             },
           }}
@@ -42,16 +42,12 @@ const LogoScroll = () => {
           {duplicatedLogos.map((logo, index) => (
             <div 
               key={index} 
-              /* Fixed dimensions to prevent gaps and keep sizes consistent */
-              className="flex-shrink-0 flex items-center justify-center w-48 h-24 mx-10"
+              className="flex-shrink-0 flex items-center justify-center w-56 h-56 mx-6 bg-white border-2 border-zinc-100 rounded-3xl shadow-sm hover:border-primary hover:shadow-md transition-all duration-300 p-8 group cursor-pointer"
             >
               <img 
                 src={logo.url} 
                 alt={logo.name} 
-                /* REMOVED: 'grayscale' and 'opacity-60' 
-                   ADDED: Full color is now visible at all times 
-                */
-                className="max-h-full max-w-full w-auto h-auto object-contain transition-transform duration-300 hover:scale-110" 
+                className="max-h-full max-w-full w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110" 
                 onError={(e) => (e.currentTarget.style.display = 'none')}
               />
             </div>

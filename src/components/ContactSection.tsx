@@ -15,6 +15,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { toast } from 'sonner';
 
 const contactInfo = [
   {
@@ -30,8 +31,8 @@ const contactInfo = [
   },
   {
     icon: Mail,
-    title: 'Email',
-    content: 'info@inotrizglobal.com',
+    title: 'Gmail',
+    content: 'info@inotrizglobal.com, inotrizglobal@gmail.com',
     href: 'mailto:info@inotrizglobal.com',
   },
   {
@@ -59,10 +60,46 @@ const ContactSection = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    setIsSubmitting(true);
+    
+    const payload = {
+      ...formData,
+      access_key: "b0e859fe94744777b15ac97dcc0fdc8e",
+      subject: "New Inquiry from Inotriz Global Website"
+    };
+
+    try {
+      const response = await fetch("https://splitforms.com/api/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      
+      if (response.ok) {
+        toast.success("Message sent successfully!", {
+          description: "We will get back to you as soon as possible.",
+        });
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        toast.error("Something went wrong.", {
+          description: "Please try again or contact us directly.",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Error sending message.", {
+        description: "Please check your internet connection and try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -96,15 +133,15 @@ const ContactSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="bg-card rounded-3xl p-8 lg:p-10 shadow-card border border-border/50">
-              <h3 className="font-display text-2xl font-bold mb-6">
-                Send Us a Message
+            <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-card border border-border/50 relative overflow-hidden">
+              <h3 className="font-display text-3xl font-bold mb-6 text-foreground">
+                Contact us
               </h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-sm font-medium mb-2 text-foreground">
                       Full Name
                     </label>
                     <Input
@@ -112,11 +149,11 @@ const ContactSection = () => {
                       placeholder="Name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="h-12 rounded-xl border-border/50 focus:border-primary"
+                      className="h-12 rounded-xl bg-[#fcecec] border-border/50 text-foreground placeholder:text-black/60 focus:border-primary focus:ring-primary/20 transition-all"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-sm font-medium mb-2 text-foreground">
                       Email
                     </label>
                     <Input
@@ -124,13 +161,13 @@ const ContactSection = () => {
                       placeholder="youremail@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="h-12 rounded-xl border-border/50 focus:border-primary"
+                      className="h-12 rounded-xl bg-[#fcecec] border-border/50 text-foreground placeholder:text-black/60 focus:border-primary focus:ring-primary/20 transition-all"
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium mb-2">
+                  <label className="block text-sm font-medium mb-2 text-foreground">
                     Phone Number
                   </label>
                   <Input
@@ -138,28 +175,29 @@ const ContactSection = () => {
                     placeholder="+91 XXXXX XXXXX"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="h-12 rounded-xl border-border/50 focus:border-primary"
+                    className="h-12 rounded-xl bg-[#fcecec] border-border/50 text-foreground placeholder:text-black/60 focus:border-primary focus:ring-primary/20 transition-all"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium mb-2">
+                  <label className="block text-sm font-medium mb-2 text-foreground">
                     Message
                   </label>
                   <Textarea
                     placeholder="Tell us about your project..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="min-h-[120px] rounded-xl border-border/50 focus:border-primary resize-none"
+                    className="min-h-[120px] rounded-xl bg-[#fcecec] border-border/50 text-foreground placeholder:text-black/60 focus:border-primary focus:ring-primary/20 transition-all resize-none"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full h-12 btn-ferrari rounded-xl text-base font-semibold"
+                  disabled={isSubmitting}
+                  className="w-full h-12 btn-ferrari rounded-xl text-base font-semibold disabled:opacity-70"
                 >
-                  Send Message
-                  <Send className="w-4 h-4 ml-2" />
+                  {isSubmitting ? "Sending..." : "Inquire Now"}
+                  {!isSubmitting && <Send className="w-4 h-4 ml-2" />}
                 </Button>
               </form>
             </div>

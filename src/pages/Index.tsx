@@ -9,7 +9,7 @@ import PortfolioSection from '@/components/PortfolioSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import { BlogCard } from "@/components/BlogCard"; 
-import { client, urlFor } from "@/lib/sanity"; 
+import { client, urlFor } from "@/lib/contentful"; 
 
 const Index = () => {
   const [latestPosts, setLatestPosts] = useState([]);
@@ -17,18 +17,23 @@ const Index = () => {
   useEffect(() => {
     const fetchLatest = async () => {
       try {
-        // This query fetches the 3 most recent posts for the home page
-        const query = `*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc)[0...3] {
-          title,
-          "slug": slug.current, 
-          "date": publishedAt,
-          "excerpt": array::join(body[0].children[].text, ""),
-          mainImage
-        }`;
-        const data = await client.fetch(query);
-        setLatestPosts(data);
+        const response = await client.getEntries({
+          content_type: 'blogPost',
+          order: ['-sys.createdAt'],
+          limit: 3
+        });
+        
+        const formattedPosts = response.items.map((item: any) => ({
+          title: item.fields.title,
+          slug: item.fields.slug,
+          date: item.fields.date || item.sys.createdAt,
+          excerpt: item.fields.excerpt || "Read our latest agency update...",
+          mainImage: item.fields.mainImage
+        }));
+        
+        setLatestPosts(formattedPosts as any);
       } catch (error) {
-        console.error("Sanity fetch error:", error);
+        console.error("Contentful fetch error:", error);
       }
     };
     fetchLatest();

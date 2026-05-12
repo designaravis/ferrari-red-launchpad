@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowUp, Instagram, Facebook, Twitter, Linkedin } from 'lucide-react'; 
+import { ArrowUp, Instagram, Facebook, Linkedin, Youtube } from 'lucide-react'; 
 import logo from '@/assets/logoo.png';
 
 const Footer = () => {
@@ -8,10 +8,10 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'Instagram', icon: <Instagram size={20} />, href: '#' },
-    { name: 'Facebook', icon: <Facebook size={20} />, href: '#' },
-    { name: 'Twitter', icon: <Twitter size={20} />, href: '#' },
-    { name: 'LinkedIn', icon: <Linkedin size={20} />, href: '#' },
+    { name: 'Instagram', icon: <Instagram size={20} />, href: 'https://www.instagram.com/inotrizglobal/' },
+    { name: 'Facebook', icon: <Facebook size={20} />, href: 'https://www.facebook.com/profile.php?id=61584745504534' },
+    { name: 'LinkedIn', icon: <Linkedin size={20} />, href: 'https://www.linkedin.com/in/inotriz-global-6bb78a393/' },
+    { name: 'YouTube', icon: <Youtube size={20} />, href: 'https://www.youtube.com/@inotrizG' },
   ];
 
   return (
