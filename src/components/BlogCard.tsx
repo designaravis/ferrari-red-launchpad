@@ -21,7 +21,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ title, excerpt, date, slug, 
       className="group h-full bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-zinc-100 flex flex-col"
     >
       {/* Image Section - Smooth Zoom on Hover */}
-      <Link to={`/blog/${slug}`} className="block h-64 overflow-hidden">
+      <Link to={`/blog/${slug}`} className="block aspect-video overflow-hidden">
         {image && (
           <motion.img 
             src={image} 

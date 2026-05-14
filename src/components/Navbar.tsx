@@ -5,13 +5,13 @@ import { Link as RouterLink } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: "Websites", href: "#websites" },
-  { name: 'Services', href: '#services' },
-  { name: 'Portfolio', href: '#portfolio' },
-  { name: "Blog", href: "#blog" },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/#home' },
+  { name: 'About', href: '/#about' },
+  { name: "Website", href: "/#websites" },
+  { name: 'Services', href: '/#services' },
+  { name: 'Portfolio', href: '/#portfolio' },
+  { name: "Blog", href: "/#blog" },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 const Navbar = () => {
@@ -41,7 +41,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.a
-            href="#home"
+            href="/"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="relative z-10"
@@ -68,7 +68,7 @@ const Navbar = () => {
               </motion.a>
             ))}
             <motion.a
-              href="#contact"
+              href="/#contact"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
@@ -116,7 +116,7 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="#contact"
+                href="/#contact"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}

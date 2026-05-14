@@ -66,7 +66,7 @@ const Footer = () => {
               {['Home', 'About', 'Services', 'Portfolio', 'Blog', 'Contact'].map((link) => (
                 <li key={link}>
                   <a
-                    href={`#${link.toLowerCase().replace(' ', '')}`}
+                    href={link === 'Blog' ? '/#blog' : `/#${link.toLowerCase().replace(' ', '')}`}
                     className="text-secondary-foreground/70 hover:text-primary transition-colors hover-underline inline-block"
                   >
                     {link}
@@ -90,7 +90,7 @@ const Footer = () => {
               ].map((service) => (
                 <li key={service}>
                   <a
-                    href="#services"
+                    href="/#services"
                     className="text-secondary-foreground/70 hover:text-primary transition-colors hover-underline inline-block"
                   >
                     {service}
